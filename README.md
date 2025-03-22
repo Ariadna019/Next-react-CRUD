@@ -1,6 +1,6 @@
 # Proyecto Next.js  con MySQL, Cloudinary y Tailwind
 
-Este es un proyecto construido con Next.js que se conecta a una base de datos MySQL y permite realizar operaciones CRUD. Además, permite subir imágenes a la nube mediante Cloudinary y está estilizado con Tailwind CSS. Finalmente, se despliega en la nube con Vercel.
+Este es un proyecto construido con Next.js que se conecta a una base de datos MySQL y permite realizar operaciones CRUD. Además, permite subir imágenes a la nube mediante Cloudinary y está estilizado con Tailwind CSS.
 
 
 Tecnologías utilizadas
