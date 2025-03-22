@@ -55,7 +55,7 @@ CREATE TABLE productos (
 
 ---
 
-## en la vista front en de los producto en como  s epone para :
+## 🌐 API Endpoints, vista del front end , de la pagina web :
 
 ### 📌 Obtener todos los productos (Página principal)  
 
