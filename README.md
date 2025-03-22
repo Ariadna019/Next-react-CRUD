@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Proyecto Next.js  con MySQL, Cloudinary y Tailwind
+Este es un proyecto construido con Next.js que se conecta a una base de datos MySQL y permite realizar operaciones CRUD. Además, permite subir imágenes a la nube mediante Cloudinary y está estilizado con Tailwind CSS. Finalmente, se despliega en la nube con Vercel.
+---
 
-## Getting Started
+Tecnologías utilizadas
+Next.js 13 (App Router, Server Actions)
 
-First, run the development server:
+MySQL (Base de datos)
+
+Cloudinary (Gestión y almacenamiento de imágenes)
+
+Tailwind CSS (Estilos y diseño)
+
+Postman (Pruebas de API)
+
+# ⚙️ Instalación y configuración  
+
+Para ejecutar este proyecto en tu máquina local, sigue los siguientes pasos:  
+
+### 1️⃣ Clonar el repositorio  
+Ejecuta el siguiente comando en la terminal:  
+
+
+### 2️⃣ Instalar dependencias  
+Instala las dependencias del proyecto con:  
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3️⃣ Configurar variables de entorbi mmodifica en la carpeta libs del archivo mysql.js ahi msofica segun tu base de dato mysql, lo mismo para cloudinary 
+```env
+DATABASE_URL=mysql://usuario:contraseña@localhost:3306/nombre_base_datos
+CLOUDINARY_URL=cloudinary://api_key:api_secret@cloud_name
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Reemplaza los valores con tus credenciales correspondientes.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🗄️ Estructura de la base de datos  
 
-To learn more about Next.js, take a look at the following resources:
+El proyecto utiliza una tabla llamada **productos**, cuya estructura en MySQL es la siguiente:  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sql
+CREATE TABLE productos (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(255) NOT NULL,
+  descripcion TEXT,
+  precio DECIMAL(10,2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## en la vista front en de los producto en como  s epone para :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📌 Obtener todos los productos (Página principal)  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```http
+http://localhost:3000/api/products
+```
+Devuelve una lista con todos los productos almacenados.  
+
+
+
+### 📌 Crear un nuevo producto  
+Al acceder a la siguiente URL, se generará automáticamente un formulario donde podrás ingresar los datos del producto y subir imágenes:
+
+```http
+ http://localhost:3000/api/products/new
+
+```
+Agrega un nuevo producto a la base de datos.  
+
+### 📌 Editar un producto  
+En la página web, al hacer clic sobre un producto listado en `/api/products`, serás redirigido automáticamente a un formulario donde podrás modificar el nombre, descripción, precio, etc., y eliminar el producto si lo deseas.
+
+```http
+http://localhost:3000/api/products/{id}
+
+```
+
